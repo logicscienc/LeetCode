@@ -1,18 +1,15 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include<cstring>
 using namespace std;
-class Solution {
-public:
-    void reverseString(vector<char>& s) {
-        int n = s.size();
-        int i=0;
-        int j=n-1;
-        while(i<=j){
-            swap(s[i],s[j]);
-            i++;
-            j--;
-        }
-        
+
+
+
+
+int main(){
+       int a = 5, b=10, c=15;
+       int *arr[] = {&a, &b, &c};
+       cout<<arr[1];
+        return 0;
     }
-};
