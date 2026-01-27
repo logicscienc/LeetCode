@@ -6,10 +6,19 @@ using namespace std;
 
 class Vehicle
 {
+
+    protected:
+    string name;
     public:
-     string name;
+     
      string model;
      int noOfTyres;
+
+
+     string getName()
+     {
+        return this->name;
+     }
 
      Vehicle(string _name, string _model, int _noOfTyres)
      { 
@@ -40,7 +49,7 @@ class Car : public Vehicle
     Car(string _name, string _model, int _noOfTyres, int _noOfDoors, string _transmissionType) : Vehicle(_name, _model, _noOfTyres)
 
     {
-        cout<<"I am inside Vehicle ctor"<<endl;
+        cout<<"I am inside Car ctor"<<endl;
         this->noOfDoors = _noOfDoors;
         this->transmissionType = _transmissionType;
     }
@@ -54,6 +63,8 @@ class Car : public Vehicle
 int main()
 {
     Car A("Maruti 800", "LXI", 4, 4, "Manual");
-
+    A.start_engine();
+    A.startAC();
+    A.stop_engine();
     return 0;
 }
