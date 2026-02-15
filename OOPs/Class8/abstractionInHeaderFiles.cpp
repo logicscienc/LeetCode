@@ -5,6 +5,13 @@
 using namespace std;
 
 
+void fun() 
+{
+    string s = "codehelp";
+    sort(s.begin(), s.end());
+}
+
+
 
 int main()
 {
@@ -19,6 +26,10 @@ int main()
         cout<< i <<endl;
 
     }
+
+     sort(v.begin(), v.end());
+     sort(v.begin(), v.end());
+     sort(v.begin(), v.end());
 
     return 0;
 }
