@@ -106,42 +106,55 @@ void printLinkedList(Node* head)
     cout<<endl;
 }
 
-void insertAtPosition(int position, int value, Node* &head, Node* &tail)
+void deleteFromPosition(int position, Node* &head, Node* &tail)
 {
-    // assuming thegiven postion will always be inside bound and not invalid
+    // invalid cases
+    int length=getLengthOfLinkedList(head);
 
-    if(position == 1)
+    if(position > length)
     {
-        insertAtHead(value, head, tail);
         return;
     }
 
-    int length = getLengthOfLinkedList(head);
-    if(position == length + 1)
+    if(head==NULL && position == 1)
     {
-        InsertAtTail(value, head, tail);
-        return;
-    }
-
-    else{
-        // middle ki position h koi
-        // step 1: Node create
-        Node* newNode = new Node(value);
-
-        // step2: temp variable ko position-1 reach karaya tha
         Node* temp = head;
+        head=NULL;
+        tail=NULL;
+        delete temp;
+        return;
+    }
+
+    // LL have multiple nodes but position is 1
+    if(position==1)
+    {
+        Node* temp = head;
+
+        head=head->next;
+        temp->next=NULL;
+        delete temp;
+        return;
+
+    }
+    else{
+        // either you are delete middle nodes or the last node
+        // step1: setup current/previous/forword pointers
+        Node* previous = head;
         for(int i=1; i<=position-2; i++)
         {
-            temp=temp->next;
+            previous=previous->next;
         }
 
-        // step 3: newNode ko temp->next se connect kia tha
-        newNode->next = temp->next;
-        // step4: temp ko newNode se connect kia tha
-        temp->next = newNode;
+        Node* current=previous->next;
+        Node* forword=current->next;
+
+        // update links
+        current->next=NULL;
+        previous->next=forword;
+        // current is isolated now
+        delete current;
+
     }
-
-
 }
 
 
@@ -166,7 +179,7 @@ int main()
 
     printLinkedList(head);
 
-    insertAtPosition(7, 500, head, tail);
+    deleteFromPosition(3, head, tail);
 
      printLinkedList(head);
 
