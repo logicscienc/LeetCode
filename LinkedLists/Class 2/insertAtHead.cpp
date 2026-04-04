@@ -29,12 +29,57 @@ void insertAtHead(int value, Node* &head, Node* &tail)
     }
     else{
         // LL is not empty
-        
+       Node* newNode= new Node(value);
+       newNode->next=head;
+       head->prev=newNode;
+       head=newNode; 
     }
+}
+
+void print(Node* head)
+{
+    Node* temp = head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+
+    cout<<"NULL" <<endl;
+}
+
+void printReverse(Node* tail)
+{
+    Node* temp = tail;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->prev;
+    }
+
+    cout<<"NULL" <<endl;
 }
 
 
 int main()
 {
+       Node* head = NULL;
+       Node* tail = NULL;
 
+       insertAtHead(10, head, tail);
+        print(head);
+       insertAtHead(20, head, tail);
+          print(head);
+        insertAtHead(30, head, tail);
+         print(head);
+         insertAtHead(40, head, tail);
+          print(head);
+          insertAtHead(50, head, tail);
+           print(head);
+           insertAtHead(60, head, tail);
+
+            print(head);
+            printReverse(tail);
+
+            return 0;
 }
